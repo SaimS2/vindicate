@@ -287,6 +287,16 @@
               <option value="A" selected>A</option>
               <option value="B">B</option>
               <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="K">K</option>
+              <option value="L">L</option>
+              <option value="M">M</option>
             </select>
           </div>
           <div id="index-list" style="display:flex;flex-direction:column;gap:.6rem"></div>
@@ -382,101 +392,46 @@
         'Constipation',
         'Cough',
         'Cyanosis'
-      ]
-      const presentations = {
-  A: [
-    'Abdominal distension',
-    'Abdominal pain',
-    'Abdominal pain in pregnancy',
-    'Aggression',
-    'Altered mental status',
-    'Amenorrhea',
-    'Anorexia',
-    'Anxiety'
-  ],
-  B: ['Back pain', 'Bruising'],
-  C: [
-    'Change in bowel habits',
-    'Chest pain',
-    'Claudication',
-    'Cold intolerance',
-    'Coma',
-    'Constipation',
-    'Cough',
-    'Cyanosis'
-  ],
-  D: [
-    'Decreased fetal movement',
-    'Deformity',
-    'Depression',
-    'Developmental delay',
-    'Diarrhea',
-    'Diplopia',
-    'Dizziness',
-    'Dyspareunia',
-    'Dysphagia',
-    'Dyspnea',
-    'Dysuria'
-  ],
-  E: [
-    'Ear discharge',
-    'Ear pain',
-    'Epistaxis',
-    'Erectile dysfunction',
-    'Eye pain'
-  ],
-  F: [
-    'Failure to thrive',
-    'Fatigue',
-    'Fever',
-    'Fever without source',
-    'First trimester bleeding',
-    'Flank pain'
-  ],
-  G: [
-    'Gait disturbance',
-    'Gynecomastia'
-  ],
-  H: [
-    'Hair loss',
-    'Headache',
-    'Hearing loss',
-    'Heartburn',
-    'Heat intolerance',
-    'Hematemesis',
-    'Hematochezia',
-    'Hematuria',
-    'Hemoptysis',
-    'Hirsutism',
-    'Hoarseness',
-    'Hyperemesis gravidarum',
-    'Hypertension in pregnancy'
-  ],
-  I: [
-    'Incontinence',
-    'Infertility',
-    'Irritability'
-  ],
-  J: [
-    'Jaundice',
-    'Joint pain',
-    'Joint swelling'
-  ],
-  K: [],
-  L: [
-    'Labour pain',
-    'Limb pain',
-    'Loss of vision',
-    'Lymphadenopathy'
-  ],
-  M: [
-    'Melena',
-    'Memory loss',
-    'Morning stiffness',
-    'Muscle pain'
-  ]
-};
-    
+      ],
+      D: [
+        'Decreased fetal movement',
+        'Deformity',
+        'Depression',
+        'Developmental delay',
+        'Diarrhea',
+        'Diplopia',
+        'Dizziness',
+        'Dyspareunia',
+        'Dysphagia',
+        'Dyspnea',
+        'Dysuria'
+      ],
+      E: [
+        'Ear discharge',
+        'Ear pain',
+        'Epistaxis',
+        'Erectile dysfunction',
+        'Eye pain'
+      ],
+      F: [
+        'Failure to thrive',
+        'Fatigue',
+        'Fever',
+        'Fever without source',
+        'First trimester bleeding',
+        'Flank pain'
+      ],
+      G: ['Gait disturbance','Gynecomastia'],
+      H: [
+        'Hair loss','Headache','Hearing loss','Heartburn','Heat intolerance',
+        'Hematemesis','Hematochezia','Hematuria','Hemoptysis','Hirsutism',
+        'Hoarseness','Hyperemesis gravidarum','Hypertension in pregnancy'
+      ],
+      I: ['Incontinence','Infertility','Irritability'],
+      J: ['Jaundice','Joint pain','Joint swelling'],
+      K: [],  // intentionally empty
+      L: ['Labour pain','Limb pain','Loss of vision','Lymphadenopathy'],
+      M: ['Melena','Memory loss','Morning stiffness','Muscle pain']
     };
 
     function renderIndex(letter='A'){
@@ -501,7 +456,7 @@
         btn.style.padding = '.9rem 1rem';
         btn.style.border = '1px solid var(--border)';
         btn.textContent = name;
-        btn.addEventListener('click', ()=>{
+        btn.addEventListener('click', ()=> {
           alert(`(Placeholder) Open presentation: ${name}`);
         });
         mount.appendChild(btn);
@@ -510,5 +465,4 @@
   </script>
 </body>
 </html>
-
 
