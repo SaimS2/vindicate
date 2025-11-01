@@ -309,13 +309,41 @@
             <button id="adult-search-btn" class="btn" type="button">Search</button>
             <button class="btn" type="button" disabled aria-disabled="true" title="Random coming soon">Random presentation</button>
           </div>
+        </div>
 
-          <h3 style="margin-top:1rem">A–Z Presentation Index</h3>
-          <div class="letters" aria-label="A to Z index">
-            <button class="pill">A</button><button class="pill">B</button><button class="pill">C</button><button class="pill">D</button><button class="pill">E</button><button class="pill">F</button><button class="pill">G</button><button class="pill">H</button><button class="pill">I</button><button class="pill">J</button><button class="pill">K</button><button class="pill">L</button><button class="pill">M</button>
-            <button class="pill">N</button><button class="pill">O</button><button class="pill">P</button><button class="pill">Q</button><button class="pill">R</button><button class="pill">S</button><button class="pill">T</button><button class="pill">U</button><button class="pill">V</button><button class="pill">W</button><button class="pill">X</button><button class="pill">Y</button><button class="pill">Z</button>
+        <div class="card" style="margin-top:1rem">
+          <h3 style="text-align:center;margin-top:.25rem">Presentation Index</h3>
+          <div style="display:flex;justify-content:center;margin:.5rem 0 1rem">
+            <select id="letter-select" class="input" style="max-width:360px;text-align:center">
+              <option value="A" selected>A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option disabled value="D">D (coming soon)</option>
+              <option disabled value="E">E (coming soon)</option>
+              <option disabled value="F">F (coming soon)</option>
+              <option disabled value="G">G (coming soon)</option>
+              <option disabled value="H">H (coming soon)</option>
+              <option disabled value="I">I (coming soon)</option>
+              <option disabled value="J">J (coming soon)</option>
+              <option disabled value="K">K (coming soon)</option>
+              <option disabled value="L">L (coming soon)</option>
+              <option disabled value="M">M (coming soon)</option>
+              <option disabled value="N">N (coming soon)</option>
+              <option disabled value="O">O (coming soon)</option>
+              <option disabled value="P">P (coming soon)</option>
+              <option disabled value="Q">Q (coming soon)</option>
+              <option disabled value="R">R (coming soon)</option>
+              <option disabled value="S">S (coming soon)</option>
+              <option disabled value="T">T (coming soon)</option>
+              <option disabled value="U">U (coming soon)</option>
+              <option disabled value="V">V (coming soon)</option>
+              <option disabled value="W">W (coming soon)</option>
+              <option disabled value="X">X (coming soon)</option>
+              <option disabled value="Y">Y (coming soon)</option>
+              <option disabled value="Z">Z (coming soon)</option>
+            </select>
           </div>
-          <p class="muted" style="margin-top:.75rem">(Index buttons are placeholders for now.)</p>
+          <div id="index-list" style="display:flex;flex-direction:column;gap:.6rem"></div>
         </div>
       </div>
     </section>
@@ -331,8 +359,76 @@
     // Footer year helper
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script>
+    // --- Adult A–Z Index data & UI ---
+    const presentations = {
+      A: [
+        'Abdominal distension',
+        'Abdominal pain',
+        'Abdominal pain in pregnancy',
+        'Aggression',
+        'Altered mental status',
+        'Amenorrhea',
+        'Anorexia',
+        'Anxiety'
+      ],
+      B: [
+        'Back pain',
+        'Bruising'
+      ],
+      C: [
+        'Change in bowel habits',
+        'Chest pain',
+        'Claudication',
+        'Cold intolerance',
+        'Coma',
+        'Constipation',
+        'Cough',
+        'Cyanosis'
+      ]
+    };
+
+    function renderIndex(letter='A'){
+      const mount = document.getElementById('index-list');
+      if(!mount) return;
+      mount.innerHTML = '';
+      const items = presentations[letter] || [];
+      if(items.length === 0){
+        const p = document.createElement('p');
+        p.className = 'muted';
+        p.textContent = 'No entries for this letter yet.';
+        mount.appendChild(p);
+        return;
+      }
+      items.forEach(name => {
+        const btn = document.createElement('button');
+        btn.className = 'btn ghost';
+        btn.style.justifyContent = 'space-between';
+        btn.style.width = '100%';
+        btn.style.background = 'var(--card)';
+        btn.style.borderRadius = '14px';
+        btn.style.padding = '.9rem 1rem';
+        btn.style.border = '1px solid var(--border)';
+        btn.textContent = name;
+        btn.addEventListener('click', ()=>{
+          alert(`(Placeholder) Open presentation: ${name}`);
+        });
+        mount.appendChild(btn);
+      });
+    }
+
+    // Initialize select & list when on the Adult page
+    document.addEventListener('DOMContentLoaded', () => {
+      const sel = document.getElementById('letter-select');
+      if(sel){
+        renderIndex(sel.value);
+        sel.addEventListener('change', () => renderIndex(sel.value));
+      }
+    });
+  </script>
 </body>
-</html><!doctype html>
+</html>
+<!doctype html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
