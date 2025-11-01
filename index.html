@@ -95,6 +95,18 @@
     .block{display:flex;flex-direction:column;gap:.35rem;padding:1rem;border:1px solid var(--border);border-radius:14px;background:var(--card)}
     .block h3{margin:0}
 
+    /* Demographic cards as links with flip text */
+    .card-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;border:1px solid var(--border);border-radius:16px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:inherit;transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+    .card-link:hover{transform:translateY(-2px) rotateX(6deg);border-color:color-mix(in oklab, var(--border), var(--fg) 18%)}
+    .card-link .ico{width:28px;height:28px;display:grid;place-items:center;color:var(--accent);opacity:.85}
+    .flip{position:relative;perspective:800px;min-height:38px}
+    .flip .front,.flip .back{display:block;transition:transform .45s ease;transform-style:preserve-3d}
+    .flip .back{position:absolute;inset:0;transform:rotateX(180deg)}
+    .card-link:hover .flip .front{transform:rotateX(180deg)}
+    .card-link:hover .flip .back{transform:rotateX(360deg)}
+    .subtitle{display:block;color:var(--muted);font-size:.9rem;margin-top:.1rem}
+    .block h3{margin:0}
+
     /* Search & index */
     .search-row{display:flex;gap:.5rem;flex-wrap:wrap}
     .input{flex:1;min-width:240px;padding:.7rem;border:1px solid var(--border);border-radius:10px;background:var(--bg-soft);color:var(--fg)}
@@ -139,7 +151,7 @@
     }
     function handleHash(){
       const hash = (location.hash || '#home').replace('#','');
-      const valid = ['home','demographics','adult'];
+      const valid = ['home','demographics','adult','neonate','pediatrics','geriatrics','obstetrics'];
       showPage(valid.includes(hash) ? hash : 'home');
       // set icon/label on load
       const theme = document.documentElement.getAttribute('data-theme');
@@ -266,31 +278,45 @@
         <a href="#home">← Back to Home</a>
         <h1 class="title">Pick a Patient Demographic</h1>
         <div class="grid-2">
-          <div class="block">
-            <h3>Neonate</h3>
-            <p class="muted">Birth to 28 days</p>
-            <button class="btn" disabled aria-disabled="true" title="Coming soon">Coming soon</button>
-          </div>
-          <div class="block">
-            <h3>Pediatrics</h3>
-            <p class="muted">28 days to 18 years</p>
-            <button class="btn" disabled aria-disabled="true" title="Coming soon">Coming soon</button>
-          </div>
-          <div class="block">
-            <h3>Adult</h3>
-            <p class="muted">18 to 65 years</p>
-            <a class="btn" href="#adult">Open Adult</a>
-          </div>
-          <div class="block">
-            <h3>Geriatrics</h3>
-            <p class="muted">65+ years</p>
-            <button class="btn" disabled aria-disabled="true" title="Coming soon">Coming soon</button>
-          </div>
-          <div class="block">
-            <h3>Obstetrics</h3>
-            <p class="muted">Pregnancy & Birth</p>
-            <button class="btn" disabled aria-disabled="true" title="Coming soon">Coming soon</button>
-          </div>
+          <a class="card-link" href="#neonate">
+            <span class="ico">👶</span>
+            <span class="flip">
+              <span class="front"><strong>Neonate</strong><span class="subtitle">Birth to 28 days</span></span>
+              <span class="back"><strong>Neonate</strong><span class="subtitle">Birth to 28 days</span></span>
+            </span>
+          </a>
+
+          <a class="card-link" href="#pediatrics">
+            <span class="ico">🧒</span>
+            <span class="flip">
+              <span class="front"><strong>Pediatrics</strong><span class="subtitle">28 days to 18 years</span></span>
+              <span class="back"><strong>Pediatrics</strong><span class="subtitle">28 days to 18 years</span></span>
+            </span>
+          </a>
+
+          <a class="card-link" href="#adult">
+            <span class="ico">🩺</span>
+            <span class="flip">
+              <span class="front"><strong>Adult</strong><span class="subtitle">18 to 65 years</span></span>
+              <span class="back"><strong>Adult</strong><span class="subtitle">18 to 65 years</span></span>
+            </span>
+          </a>
+
+          <a class="card-link" href="#geriatrics">
+            <span class="ico">👴</span>
+            <span class="flip">
+              <span class="front"><strong>Geriatrics</strong><span class="subtitle">65+ years</span></span>
+              <span class="back"><strong>Geriatrics</strong><span class="subtitle">65+ years</span></span>
+            </span>
+          </a>
+
+          <a class="card-link" href="#obstetrics">
+            <span class="ico">💙</span>
+            <span class="flip">
+              <span class="front"><strong>Obstetrics</strong><span class="subtitle">Pregnancy & Birth</span></span>
+              <span class="back"><strong>Obstetrics</strong><span class="subtitle">Pregnancy & Birth</span></span>
+            </span>
+          </a>
         </div>
       </div>
     </section>
@@ -318,29 +344,6 @@
               <option value="A" selected>A</option>
               <option value="B">B</option>
               <option value="C">C</option>
-              <option disabled value="D">D (coming soon)</option>
-              <option disabled value="E">E (coming soon)</option>
-              <option disabled value="F">F (coming soon)</option>
-              <option disabled value="G">G (coming soon)</option>
-              <option disabled value="H">H (coming soon)</option>
-              <option disabled value="I">I (coming soon)</option>
-              <option disabled value="J">J (coming soon)</option>
-              <option disabled value="K">K (coming soon)</option>
-              <option disabled value="L">L (coming soon)</option>
-              <option disabled value="M">M (coming soon)</option>
-              <option disabled value="N">N (coming soon)</option>
-              <option disabled value="O">O (coming soon)</option>
-              <option disabled value="P">P (coming soon)</option>
-              <option disabled value="Q">Q (coming soon)</option>
-              <option disabled value="R">R (coming soon)</option>
-              <option disabled value="S">S (coming soon)</option>
-              <option disabled value="T">T (coming soon)</option>
-              <option disabled value="U">U (coming soon)</option>
-              <option disabled value="V">V (coming soon)</option>
-              <option disabled value="W">W (coming soon)</option>
-              <option disabled value="X">X (coming soon)</option>
-              <option disabled value="Y">Y (coming soon)</option>
-              <option disabled value="Z">Z (coming soon)</option>
             </select>
           </div>
           <div id="index-list" style="display:flex;flex-direction:column;gap:.6rem"></div>
@@ -355,76 +358,34 @@
     </div>
   </footer>
 
+  <!-- Placeholder pages for other demographics -->
+  <section id="neonate" class="page container section">
+    <a href="#demographics">← Back to Demographics</a>
+    <h1 class="title">Neonate (Birth to 28 days)</h1>
+    <p class="muted">Content will be added here.</p>
+  </section>
+
+  <section id="pediatrics" class="page container section">
+    <a href="#demographics">← Back to Demographics</a>
+    <h1 class="title">Pediatrics (28 days to 18 years)</h1>
+    <p class="muted">Content will be added here.</p>
+  </section>
+
+  <section id="geriatrics" class="page container section">
+    <a href="#demographics">← Back to Demographics</a>
+    <h1 class="title">Geriatrics (65+ years)</h1>
+    <p class="muted">Content will be added here.</p>
+  </section>
+
+  <section id="obstetrics" class="page container section">
+    <a href="#demographics">← Back to Demographics</a>
+    <h1 class="title">Obstetrics (Pregnancy & Birth)</h1>
+    <p class="muted">Content will be added here.</p>
+  </section>
+
   <script>
     // Footer year helper
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-  <script>
-    // --- Adult A–Z Index data & UI ---
-    const presentations = {
-      A: [
-        'Abdominal distension',
-        'Abdominal pain',
-        'Abdominal pain in pregnancy',
-        'Aggression',
-        'Altered mental status',
-        'Amenorrhea',
-        'Anorexia',
-        'Anxiety'
-      ],
-      B: [
-        'Back pain',
-        'Bruising'
-      ],
-      C: [
-        'Change in bowel habits',
-        'Chest pain',
-        'Claudication',
-        'Cold intolerance',
-        'Coma',
-        'Constipation',
-        'Cough',
-        'Cyanosis'
-      ]
-    };
-
-    function renderIndex(letter='A'){
-      const mount = document.getElementById('index-list');
-      if(!mount) return;
-      mount.innerHTML = '';
-      const items = presentations[letter] || [];
-      if(items.length === 0){
-        const p = document.createElement('p');
-        p.className = 'muted';
-        p.textContent = 'No entries for this letter yet.';
-        mount.appendChild(p);
-        return;
-      }
-      items.forEach(name => {
-        const btn = document.createElement('button');
-        btn.className = 'btn ghost';
-        btn.style.justifyContent = 'space-between';
-        btn.style.width = '100%';
-        btn.style.background = 'var(--card)';
-        btn.style.borderRadius = '14px';
-        btn.style.padding = '.9rem 1rem';
-        btn.style.border = '1px solid var(--border)';
-        btn.textContent = name;
-        btn.addEventListener('click', ()=>{
-          alert(`(Placeholder) Open presentation: ${name}`);
-        });
-        mount.appendChild(btn);
-      });
-    }
-
-    // Initialize select & list when on the Adult page
-    document.addEventListener('DOMContentLoaded', () => {
-      const sel = document.getElementById('letter-select');
-      if(sel){
-        renderIndex(sel.value);
-        sel.addEventListener('change', () => renderIndex(sel.value));
-      }
-    });
   </script>
 </body>
 </html>
